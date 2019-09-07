@@ -21,3 +21,12 @@ form .btn {
   margin: 1em auto 1em auto;
 
 }
+
+.container {
+  margin-bottom: 1em;
+}
+
+.card {
+  text-align: center;
+  padding: 1em;
+}
