@@ -49,5 +49,7 @@ form.addEventListener('submit', (e) => {
     newStudent.assignedHouse = houseArr[Math.floor(Math.random()*houseArr.length)];
     studentCardArr.push(newStudent);
     cardPrinter(studentCardArr);
+    inputFirstName.value = '';
+    inputLastName.value = '';
 });
 
