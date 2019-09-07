@@ -16,14 +16,7 @@ const houseArr = [
     "Ravenclaw"
 ];
 
-const selectItem = houseArr[Math.floor(Math.random()*houseArr.length)];
-
 const studentCardArr = [
-    {
-    firstName: 'Harry',
-    lastName: 'Potter',
-    assignedHouse: houseArr[Math.floor(Math.random()*houseArr.length)]
-    }
 ];
 
 const cardPrinter = (arr) => {
