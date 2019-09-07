@@ -6,7 +6,7 @@ document.getElementById('getStartedBtn').addEventListener('click', () => {
 });
 
 const printToDom = (divId, toPrint) => {
-    document.getElementById(divId).innerHTML += toPrint;
+    document.getElementById(divId).innerHTML = toPrint;
 };
 
 const houseArr = [
@@ -42,13 +42,19 @@ const cardPrinter = (arr) => {
     printToDom('studentCards', domString);
 }
 
-cardPrinter(studentCardArr);
 
-const firstNameInput = document.getElementById('firstName').value;
-const lastNameInput = document.getElementById('lastName').value;
 
-const sortStudent = document.getElementById('sortStudentBtn');
-sortStudent.addEventListener('click', (e) => {
-    alert('clicked');
+const form = document.getElementById('studentForm');
+const inputFirstName = document.getElementById('firstName');
+const inputLastName = document.getElementById('lastName');
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let newStudent = {};
+    newStudent.firstName = `${inputFirstName.value}`;
+    newStudent.lastName = `${inputLastName.value}`;
+    newStudent.assignedHouse = houseArr[Math.floor(Math.random()*houseArr.length)];
+    studentCardArr.push(newStudent);
+    cardPrinter(studentCardArr);
 });
 
