@@ -44,8 +44,11 @@ const cardPrinter = (arr) => {
 
 cardPrinter(studentCardArr);
 
+const firstNameInput = document.getElementById('firstName').value;
+const lastNameInput = document.getElementById('lastName').value;
+
 const sortStudent = document.getElementById('sortStudentBtn');
-sortStudent.addEventListener('click', () => {
-    alert('Hello there');
+sortStudent.addEventListener('click', (e) => {
+    alert('clicked');
 });
 
