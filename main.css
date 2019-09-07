@@ -3,6 +3,9 @@ body {
 }
 
 .jumbotron {
+  background-image: url("./images/golden-brown-door.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
   text-align: center; 
   background-color: rgb(107, 70, 45); 
   color: whitesmoke;
