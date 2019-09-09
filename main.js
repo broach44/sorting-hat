@@ -63,6 +63,8 @@ form.addEventListener('submit', (e) => {
     };    
 });
 
+//TODO: Reprint the cards...
+
 //TODO: 
 //Currently the event listener is working on the expel buttons and cards can be displayed as none.
 //BUG TO FIX is that when you click to submit a new student after you have expelled some then the others that were expelled will come back.
