@@ -50,6 +50,18 @@ form.addEventListener('submit', (e) => {
     inputLastName.value = ''; 
     let indexedId = studentCardArr.indexOf(newStudent) + newStudent.firstName + newStudent.lastName; 
     newStudent.customIndex = indexedId;
+
+    let myNodeList = document.querySelectorAll('.expel');
+    for (let i = 0; i < myNodeList.length; i++) {
+        myNodeList[i].addEventListener('click', (e) => {
+            let target = e.target.id;
+            console.log(target.slice(5));
+            
+            
+        });
+    }
+
+
     // document.getElementsByClassName('expel').addEventListener('click', (e) => {
     //     let currentTarget = e.target.id;
     //     if (currentTarget.includes('expel')) {
@@ -71,7 +83,10 @@ form.addEventListener('submit', (e) => {
     // }));
 });
 
+//TODO: 
+//Add a unique event listener to each button that is generated that will be able to either remove the object from the array or to change a property in the object so it does not display.
 
+//1...add event listener to specific button - to do this will need the id from that button which is uniquely generated upon creation.
 
 
 
