@@ -24,9 +24,9 @@ const cardPrinter = (arr) => {
         const currentObject = arr[i];
         domString += `
         <div class="card col-4 ${currentObject.assignedHouse}">
-        <h2>${currentObject.firstName} ${currentObject.lastName}</h2>
-        <h3>${currentObject.assignedHouse}</h3>
-        <button type="button" class="btn btn-outline-dark expel" id="expel${i}">Expel</button>
+            <h2>${currentObject.firstName} ${currentObject.lastName}</h2>
+            <h3>${currentObject.assignedHouse}</h3>
+            <button type="button" class="btn btn-outline-dark expel" id="expel${i}">Expel</button>
         </div>
         `
     }
@@ -48,45 +48,22 @@ form.addEventListener('submit', (e) => {
     cardPrinter(studentCardArr);
     inputFirstName.value = '';
     inputLastName.value = ''; 
-    let indexedId = studentCardArr.indexOf(newStudent) + newStudent.firstName + newStudent.lastName; 
-    newStudent.customIndex = indexedId;
-
+    //Below selects the nodes and assigns the event listener to each card
     let myNodeList = document.querySelectorAll('.expel');
     for (let i = 0; i < myNodeList.length; i++) {
         myNodeList[i].addEventListener('click', (e) => {
-            let target = e.target.id;
-            console.log(target.slice(5));
-            
-            
+            let target = e.target.parentNode;
+            target.style.display = 'none';
+            //TODO: Add an option to add a class here for voldemort's army//
         });
     }
-
-
-    // document.getElementsByClassName('expel').addEventListener('click', (e) => {
-    //     let currentTarget = e.target.id;
-    //     if (currentTarget.includes('expel')) {
-    //         let idSplit = target.split('l');
-    //         const arrLocation = parseInt(idSplit[1]);
-    //         studentCardArr.splice(arrLocation, 1);
-    //         cardPrinter(studentCardArr);
-    // })
-
-    // document.querySelectorAll('.btn').forEach(btn => btn.addEventListener('click', (e) => {
-    //     let id = e.target.id;
-    //     alert(id + 'sort of works');
-        // alert(indexedId.parentNode);
-        // for (let i =0; i < studentCardArr.length; i++) {
-        //     if (studentCardArr[i].indexedId === id) {
-        //         delete studentCardArr[i];
-        //     }
-        // }
-    // }));
 });
 
 //TODO: 
-//Add a unique event listener to each button that is generated that will be able to either remove the object from the array or to change a property in the object so it does not display.
+//Currently the event listener is working on the expel buttons and cards can be displayed as none.
+//BUG TO FIX is that when you click to submit a new student after you have expelled some then the others that were expelled will come back.
 
-//1...add event listener to specific button - to do this will need the id from that button which is uniquely generated upon creation.
+
 
 
 
