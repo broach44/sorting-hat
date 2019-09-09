@@ -23,7 +23,7 @@ const cardPrinter = (arr) => {
     for (let i = 0; i < arr.length; i++) {
         const currentObject = arr[i];
         domString += `
-        <div class="card col-4 ${currentObject.assignedHouse}">
+        <div class="card col-12 col-md-6 col-lg-4 ${currentObject.assignedHouse}">
             <h2>${currentObject.firstName} ${currentObject.lastName}</h2>
             <h3>${currentObject.assignedHouse}</h3>
             <button type="button" class="btn btn-outline-dark expel" id="expel${i}">Expel</button>
@@ -41,13 +41,17 @@ const inputLastName = document.getElementById('lastName');
 form.addEventListener('submit', (e) => {
     e.preventDefault(); //prevents refresh of page
     let newStudent = {}; 
-    newStudent.firstName = `${inputFirstName.value}`;
-    newStudent.lastName = `${inputLastName.value}`;
-    newStudent.assignedHouse = houseArr[Math.floor(Math.random()*houseArr.length)];
-    studentCardArr.push(newStudent);
+    newStudent.firstName = `${inputFirstName.value}`; //adds to object
+    newStudent.lastName = `${inputLastName.value}`;  //adds to object
+    newStudent.assignedHouse = houseArr[Math.floor(Math.random()*houseArr.length)]; //adds to object
+    studentCardArr.push(newStudent); //pushes new student object to main student array
+    // cardPrinter(studentCardArr); //prints the cards
+    inputFirstName.value = ''; //clears the input field
+    inputLastName.value = '';  //clears the input field
+    
+    //TODO: Try and add an if statement to check whether the display is not set to none then print
+        
     cardPrinter(studentCardArr);
-    inputFirstName.value = '';
-    inputLastName.value = ''; 
     //Below selects the nodes and assigns the event listener to each card
     let myNodeList = document.querySelectorAll('.expel');
     for (let i = 0; i < myNodeList.length; i++) {
@@ -56,7 +60,7 @@ form.addEventListener('submit', (e) => {
             target.style.display = 'none';
             //TODO: Add an option to add a class here for voldemort's army//
         });
-    }
+    };    
 });
 
 //TODO: 
