@@ -59,6 +59,7 @@ form.addEventListener('submit', (e) => {
             let target = e.target.parentNode;
             target.style.display = 'none';
             //TODO: Add an option to add a class here for voldemort's army//
+            //TODO: Add a property of expelled and set value to true or false. Check that value prior to printing to the DOM
         });
     };    
 });
