@@ -22,6 +22,7 @@ const cardPrinter = (arr) => {
                     <div class="row">`;
     for (let i = 0; i < arr.length; i++) {
         const currentObject = arr[i];
+        if (currentObject.expelled = 'false') {
         domString += `
         <div class="card col-12 col-md-6 col-lg-4 ${currentObject.assignedHouse}">
             <h2>${currentObject.firstName} ${currentObject.lastName}</h2>
@@ -29,6 +30,7 @@ const cardPrinter = (arr) => {
             <button type="button" class="btn btn-outline-dark expel" id="expel${i}">Expel</button>
         </div>
         `
+        }
     }
     domString += `</div></div>`
     printToDom('studentCards', domString);        
@@ -44,6 +46,7 @@ form.addEventListener('submit', (e) => {
     newStudent.firstName = `${inputFirstName.value}`; //adds to object
     newStudent.lastName = `${inputLastName.value}`;  //adds to object
     newStudent.assignedHouse = houseArr[Math.floor(Math.random()*houseArr.length)]; //adds to object
+    newStudent.expelled = 'false';
     studentCardArr.push(newStudent); //pushes new student object to main student array
     // cardPrinter(studentCardArr); //prints the cards
     inputFirstName.value = ''; //clears the input field
@@ -58,6 +61,13 @@ form.addEventListener('submit', (e) => {
         myNodeList[i].addEventListener('click', (e) => {
             let target = e.target.parentNode;
             target.style.display = 'none';
+            studentCardArr[i].expelled = 'true';//TODO: does not work on the first generated, works on all after....items are not hidden on display
+            // cardPrinter(studentCardArr);
+            // } else if (studentCardArr.expelled = 'true') {
+            //     
+            // 
+        
+
             //TODO: Add an option to add a class here for voldemort's army//
             //TODO: Add a property of expelled and set value to true or false. Check that value prior to printing to the DOM
         });
