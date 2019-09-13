@@ -22,15 +22,15 @@ const cardPrinter = (arr) => {
                     <div class="row">`;
     for (let i = 0; i < arr.length; i++) {
         const currentObject = arr[i];
-        if (currentObject.expelled = 'false') {
         domString += `
         <div class="card col-12 col-md-6 col-lg-4 ${currentObject.assignedHouse}">
             <h2>${currentObject.firstName} ${currentObject.lastName}</h2>
             <h3>${currentObject.assignedHouse}</h3>
             <button type="button" class="btn btn-outline-dark expel" id="expel${i}">Expel</button>
+            <h6 style="display: none">${currentObject.expelled}</h6>
         </div>
         `
-        }
+    
     }
     domString += `</div></div>`
     printToDom('studentCards', domString);        
@@ -40,9 +40,9 @@ const form = document.getElementById('studentForm');
 const inputFirstName = document.getElementById('firstName');
 const inputLastName = document.getElementById('lastName');
 
-form.addEventListener('submit', (e) => {
-    e.preventDefault(); //prevents refresh of page
-    let newStudent = {}; 
+//FUNCTIONS//
+const createNewStudent = () => {
+    let newStudent = []; 
     newStudent.firstName = `${inputFirstName.value}`; //adds to object
     newStudent.lastName = `${inputLastName.value}`;  //adds to object
     newStudent.assignedHouse = houseArr[Math.floor(Math.random()*houseArr.length)]; //adds to object
@@ -51,9 +51,14 @@ form.addEventListener('submit', (e) => {
     // cardPrinter(studentCardArr); //prints the cards
     inputFirstName.value = ''; //clears the input field
     inputLastName.value = '';  //clears the input field
-    
-    //TODO: Try and add an if statement to check whether the display is not set to none then print
-        
+}
+
+
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault(); //prevents refresh of page
+    createNewStudent();
+
     cardPrinter(studentCardArr);
     //Below selects the nodes and assigns the event listener to each card
     let myNodeList = document.querySelectorAll('.expel');
@@ -61,29 +66,30 @@ form.addEventListener('submit', (e) => {
         myNodeList[i].addEventListener('click', (e) => {
             let target = e.target.parentNode;
             target.style.display = 'none';
-            studentCardArr[i].expelled = 'true';//TODO: does not work on the first generated, works on all after....items are not hidden on display
-            // cardPrinter(studentCardArr);
-            // } else if (studentCardArr.expelled = 'true') {
-            //     
-            // 
-        
-
+            studentCardArr[i].expelled = 'true';
+            //TODO: does not work on the first generated, works on all after....items are not hidden on display
             //TODO: Add an option to add a class here for voldemort's army//
-            //TODO: Add a property of expelled and set value to true or false. Check that value prior to printing to the DOM
         });
     };    
 });
 
-//TODO: Reprint the cards...
+// const eraseCards = (arr) => {
+
+
+// eraseCards(studentCardArr);
+
+//TODO: Reprint the cards...tip from Greg..
 
 //TODO: 
 //Currently the event listener is working on the expel buttons and cards can be displayed as none.
 //BUG TO FIX is that when you click to submit a new student after you have expelled some then the others that were expelled will come back.
 
+//TODO: 9.13.19 - Try changing the event listeners into a function and altering the calling order of those functions. 
 
 
-
-
+// 1. When you click the button if student is not expelled print to Dom
+// 2. If the student is expelled display = none
+// 3. When you click the button expel the student and display = none
 
 
 
