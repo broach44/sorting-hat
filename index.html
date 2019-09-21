@@ -14,7 +14,7 @@
         <p class="lead">Behold! The great sorting game shall commence.  Go ahead and throw your friend (or enemies) names into the hat to be sorted. Let the hat decide your path!</p>
         <hr class="my-4">
         <p>Click the button below to start sorting. Have fun!</p>
-        <a class="btn btn-secondary btn-lg" href="#" role="button" id="getStartedBtn">Let's get sorting!</a>
+        <button type="button" class="btn btn-secondary btn-lg" id="getStartedBtn">Let's get sorting!</button>
       </div>
 
 <!-- Start form for entering sorting info  -->
@@ -23,20 +23,24 @@
         <div class="form-row">
             <div class="col col-lg-6 col-12">
                 <label for="firstName">Student First Name:</label>
-                <input type="text" class="form-control" id="firstName" placeholder="Harry">
+                <input type="text" class="form-control" id="firstName" placeholder="Harry" required>
             </div>
             <div class="col col-lg-6 col-12">
                 <label for="lastName">Student Last Name:</label>
-                <input type="text" class="form-control" id="lastName" placeholder="Potter">
+                <input type="text" class="form-control" id="lastName" placeholder="Potter" required>
             </div>
         </div>
         <div class="form-row">
-        <button type="submit" class="btn btn-secondary btn-lg">Start Sort</button>
+        <button type="submit" class="btn btn-secondary btn-lg" id="sortStudentBtn">Start Sort</button>
         </div>
     </form>
-
 <!-- End form -->
 
+<!-- Start Student Cards -->
+    <div class="container justify-content-center">
+    <div class="container-fluid row my-auto justify-center" id="studentCards"></div>
+    </div>
+<!-- End Student Cards -->
 
     <script src="./main.js"></script>
 </body>
