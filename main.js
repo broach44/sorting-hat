@@ -16,6 +16,7 @@ const houseArr = [
     "Slytherin",
     "Ravenclaw"
     ];
+
 const studentCardArr = [];
 const form = document.getElementById('studentForm');
 const inputFirstName = document.getElementById('firstName');
@@ -57,7 +58,7 @@ const createNewStudent = () => {
     newStudent.firstName = `${inputFirstName.value}`; //adds to object
     newStudent.lastName = `${inputLastName.value}`;  //adds to object
     newStudent.assignedHouse = houseArr[Math.floor(Math.random()*houseArr.length)]; //adds to object
-    newStudent.expelled = 'false';
+    newStudent.expelled = false;
     studentCardArr.push(newStudent); //pushes new student object to main student array
     // cardPrinter(studentCardArr); //prints the cards
     inputFirstName.value = ''; //clears the input field
@@ -71,24 +72,77 @@ const assignExpelListener = () => {
             e.stopPropagation();
             let target = e.target.parentNode;
             target.style.display = 'none';
-            studentCardArr[i].expelled = 'true';
+            studentCardArr[i].expelled = true;
         //TODO: Add an option to add a class here for voldemort's army//
         });
+
     }; 
+    
 };
+
+const reprinter = (arr) => {
+    let domString = `
+
+        `;
+    for (let i = 0; i < arr.length; i++) {
+        const currentObject = arr[i]; //select each object in array
+        // if they are not expelled
+        if (currentObject.expelled === false) {
+        // add to String
+            domString += `
+            <div class="card col-12 col-md-6 col-lg-4 ${currentObject.assignedHouse}">
+            <h2>${currentObject.firstName} ${currentObject.lastName}</h2>
+            <h3>${currentObject.assignedHouse}</h3>
+            <button type="button" class="btn btn-outline-dark expel" id="expel${i}">Expel</button>
+            <h6 style="display: none">${currentObject.expelled}</h6>
+            </div>
+            `
+        }
+        
+        printToDom('studentCards', domString);        
+    };
+}
+
 
 const addListenersAndPrint = () => {
     form.addEventListener('submit', (e) => {
         e.preventDefault(); //prevents refresh of page
-        e.stopPropagation();
+        // e.stopPropagation();
         createNewStudent();
-        cardPrinter(studentCardArr);
+        reprinter(studentCardArr);
         assignExpelListener();
+        
     });
 };
 
 toggleFormFunction();
 addListenersAndPrint();
+
+// const reprinter = (arr) => {
+//     let domString = `
+//         <div class="container">
+//         <div class="row">`;
+//     for (let i = 0; i < arr.length; i++) {
+//         const currentObject = arr[i]; //select each object in array
+//         // if they are not expelled
+//         if (currentObject.expelled == false) {
+//         // add to String
+//             domString += `
+//             <div class="card col-12 col-md-6 col-lg-4 ${currentObject.assignedHouse}">
+//             <h2>${currentObject.firstName} ${currentObject.lastName}</h2>
+//             <h3>${currentObject.assignedHouse}</h3>
+//             <button type="button" class="btn btn-outline-dark expel" id="expel${i}">Expel</button>
+//             <h6 style="display: none">${currentObject.expelled}</h6>
+//             </div>
+//             `
+//         }
+//         domString += `</div></div>`
+//         printToDom('studentCards', domString);        
+//     };
+// }
+
+// reprinter(studentCardArr);
+
 
 
 //****TESTING FUNCTIONS****//
