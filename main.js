@@ -28,6 +28,8 @@ const toggleFormFunction = () => {
     selectStudentForm.style.display = 'none';
     document.getElementById('getStartedBtn').addEventListener('click', () => {
         selectStudentForm.style.display = 'block';
+        const selectJumbo = document.getElementsByClassName('jumbotron');
+        selectJumbo[0].style.display = 'none';
     });
 };
 
