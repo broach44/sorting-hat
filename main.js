@@ -10,6 +10,7 @@
 
 //*****************************************//
 
+
 const houseArr = [
     "Gryffindor",
     "Hufflepuff",
@@ -29,7 +30,7 @@ const toggleFormFunction = () => {
     document.getElementById('getStartedBtn').addEventListener('click', () => {
         selectStudentForm.style.display = 'block';
         const selectJumbo = document.getElementsByClassName('jumbotron');
-        selectJumbo[0].style.display = 'none';
+        selectJumbo[0].classList.add('movedOut');
     });
 };
 
