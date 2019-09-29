@@ -6,7 +6,7 @@ This application will allow a user to sort themselves and/or others into random 
 - Dynamically created cards
 - Dynamic buttons allowing user to expel students
 - Cards are colored dynamically based on which house is assigned
-
+- Form fields are required
 ## Screenshots
 
 #### Main View:
