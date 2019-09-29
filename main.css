@@ -10,10 +10,16 @@ body {
   background-image: url("./images/golden-brown-door.jpg");
   background-size: cover;
   background-repeat: no-repeat;
+  display: block;
   text-align: center; 
   background-color: rgb(107, 70, 45); 
   color: whitesmoke;
   box-shadow: 5px 5px 3px rgb(141, 100, 72);
+  transition: display 5s ease;
+}
+
+.jumbotron.movedOut {
+  display: none;
 }
 
 form {
