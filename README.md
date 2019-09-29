@@ -11,9 +11,15 @@ This application will allow a user to sort themselves and/or others into random 
 
 #### Main View:
 
+![Main View](https://raw.githubusercontent.com/broach44/sorting-hat/master/screenshots/main-view.PNG)
+
 #### Form View:
 
+![Form View](https://raw.githubusercontent.com/broach44/sorting-hat/master/screenshots/form-view.PNG)
+
 #### Card View:
+
+![Card View](https://raw.githubusercontent.com/broach44/sorting-hat/master/screenshots/card-view.PNG)
 
 ## How to Run
 - Clone down this project
